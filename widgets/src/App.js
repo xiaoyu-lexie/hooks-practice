@@ -3,6 +3,8 @@ import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
 import Translate from './components/Translate';
+import Route from './components/Route';
+import Header from './components/Header';
 
 const items = [
   {
@@ -36,8 +38,33 @@ const options = [
   }
 ];
 
+// the following 4 is the basic component routing
+// const showAccordion = () => {
+//   if (window.location.pathname === '/') {
+//     return <Accordion items={items} />
+//   }
+// }
+
+// const showList = () => {
+//   if (window.location.pathname === '/list') {
+//     return <Search />
+//   }
+// }
+
+// const showDropdown = () => {
+//   if (window.location.pathname === '/dropdown') {
+//     return <Dropdown />
+//   }
+// }
+
+// const showTranslate = () => {
+//   if (window.location.pathname === '/translate') {
+//     return <Translate />
+//   }
+// }
+
 const App =  () => {
-  // // we introduce this toggle is to illustrate line 20-22 in Dropdown.js
+  // // we introduce this toggle is to illustrate removeEventListerner in useEffect return function in Dropdown.js
   // const [toggleDropdown, setToggleDropdown] = useState(true)
 
   // return (
@@ -49,9 +76,37 @@ const App =  () => {
   //   </div>
   // )
 
+  const [selected, setSelected] = useState(options[0])
+
   return (
     <div>
-      <Translate />
+      {/* {showAccordion()}
+      {showList()}
+      {showDropdown()}
+      {showTranslate()} */}
+
+      <Header />
+
+      <Route path="/">
+        <Accordion items={items}/>
+      </Route>
+
+      <Route path="/list">
+        <Search />
+      </Route>
+
+      <Route path="/dropdown">
+        <Dropdown
+          label="Select a Color"
+          options={options}
+          selected={selected}
+          onSelectedChange={setSelected}
+          />
+      </Route>
+
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   )
 };
