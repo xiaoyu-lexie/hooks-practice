@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
 import Dropdown from './components/Dropdown';
+import Translate from './components/Translate';
 
 const items = [
   {
@@ -36,15 +37,21 @@ const options = [
 ];
 
 const App =  () => {
-  // we introduce this toggle is to illustrate line 20-22 in Dropdown.js
-  const [toggleDropdown, setToggleDropdown] = useState(true)
+  // // we introduce this toggle is to illustrate line 20-22 in Dropdown.js
+  // const [toggleDropdown, setToggleDropdown] = useState(true)
+
+  // return (
+  //   <div>
+  //     <button onClick={() => setToggleDropdown(!toggleDropdown)}>Toggle Dropdown</button>
+  //     {toggleDropdown ? <Dropdown
+  //       options={options}
+  //     />: null}
+  //   </div>
+  // )
 
   return (
     <div>
-      <button onClick={() => setToggleDropdown(!toggleDropdown)}>Toggle Dropdown</button>
-      {toggleDropdown ? <Dropdown
-        options={options}
-      />: null}
+      <Translate />
     </div>
   )
 };
