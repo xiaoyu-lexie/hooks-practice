@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Accordion from './components/Accordion';
 import Search from './components/Search';
+import Dropdown from './components/Dropdown';
 
 const items = [
   {
@@ -15,12 +16,35 @@ const items = [
     title: "Q3",
     content: "content about Q3"
   }
-]
+];
+
+const options = [
+  {
+    label: 'The Color Red',
+    value: 'red'
+  },
+
+  {
+    label: 'The Color Blue',
+    value: 'blue'
+  },
+
+  {
+    label: 'The Color Green',
+    value: 'green'
+  }
+];
 
 const App =  () => {
+  // we introduce this toggle is to illustrate line 20-22 in Dropdown.js
+  const [toggleDropdown, setToggleDropdown] = useState(true)
+
   return (
     <div>
-      <Search />
+      <button onClick={() => setToggleDropdown(!toggleDropdown)}>Toggle Dropdown</button>
+      {toggleDropdown ? <Dropdown
+        options={options}
+      />: null}
     </div>
   )
 };
